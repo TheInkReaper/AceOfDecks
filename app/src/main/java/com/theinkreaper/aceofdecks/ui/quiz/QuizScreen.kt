@@ -15,6 +15,8 @@ import androidx.compose.ui.unit.sp
 import com.theinkreaper.aceofdecks.R
 import org.koin.androidx.compose.koinViewModel
 import androidx.compose.ui.graphics.Color
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -97,7 +99,9 @@ fun QuizScreen(
             } else {
                 currentCard?.let { card ->
                     Column(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .verticalScroll(rememberScrollState()),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(

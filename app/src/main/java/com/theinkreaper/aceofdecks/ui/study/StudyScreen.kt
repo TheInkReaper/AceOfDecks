@@ -17,6 +17,8 @@ import androidx.compose.ui.unit.sp
 import com.theinkreaper.aceofdecks.R
 import com.theinkreaper.aceofdecks.domain.UserGrade
 import org.koin.androidx.compose.koinViewModel
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -63,7 +65,10 @@ fun StudyScreen(
                     Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.SpaceBetween) {
                         Card(modifier = Modifier.weight(1f).fillMaxWidth(), elevation = CardDefaults.cardElevation(4.dp)) {
                             Column(
-                                modifier = Modifier.fillMaxSize().padding(24.dp),
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .padding(24.dp)
+                                    .verticalScroll(rememberScrollState()),
                                 horizontalAlignment = Alignment.CenterHorizontally,
                                 verticalArrangement = Arrangement.Center
                             ) {
