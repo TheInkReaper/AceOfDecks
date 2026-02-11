@@ -1,0 +1,112 @@
+<resources>
+    <string name="app_name">Ace Of Decks</string>
+
+    <string name="action_save">Save</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_add">Add</string>
+    <string name="confirm_delete_title">Are you sure?</string>
+    <string name="confirm_delete_message">This action cannot be undone.</string>
+
+    <string name="home_title">My Decks</string>
+    <string name="home_empty">No decks found. Create one!</string>
+    <string name="dialog_create_deck_title">New Deck</string>
+    <string name="deck_name_hint">Deck Name</string>
+
+    <string name="action_study">Study</string>
+    <string name="cards_count_format">%d cards</string>
+    <string name="no_cards_in_deck">This deck is empty.</string>
+
+    <string name="editor_title_new">New Card</string>
+    <string name="editor_title_edit">Edit Card</string>
+    <string name="label_card_type">Card Type</string>
+    <string name="type_flashcard">Flashcard (Memorize)</string>
+    <string name="type_test">Test / Quiz (Multiple Choice)</string>
+    <string name="label_front">Front / Question</string>
+    <string name="label_back">Back / Correct Answer</string>
+    <string name="label_distractors">Wrong Answers (For Test Mode)</string>
+    <string name="hint_distractor">Wrong answer…</string>
+    <string name="helper_distractors">Add at least 1 wrong answer for Quiz mode.</string>
+
+    <string name="study_mode_flashcards">Flashcards (SRS)</string>
+    <string name="study_mode_quiz">Quiz Mode</string>
+    <string name="btn_show_answer">Show Answer</string>
+    <string name="grade_again">Again</string>
+    <string name="grade_hard">Hard</string>
+    <string name="grade_good">Good</string>
+    <string name="grade_easy">Easy</string>
+    <string name="quiz_score_format">Score: %1$d / %2$d</string>
+    <string name="quiz_finished">Quiz Finished!</string>
+
+    <string name="action_export">Export Deck</string>
+    <string name="action_import">Import Deck</string>
+    <string name="import_success">Deck imported successfully</string>
+    <string name="export_success">Deck exported to Downloads</string>
+    <string name="error_generic">Something went wrong</string>
+    <string name="chip_flashcard">Flashcard</string>
+    <string name="chip_test">Test</string>
+
+    <string name="settings_title">Deck Settings</string>
+    <string name="settings_study_limit">Daily Limit (Study)</string>
+    <string name="settings_quiz_limit">Questions per Quiz</string>
+    <string name="settings_limit_none">No limit (All)</string>
+    <string name="settings_cards_format">%d cards</string>
+    <string name="settings_questions_format">%d questions</string>
+    <string name="settings_note">Note: If the deck has fewer cards, all available ones will be used.</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="label_explanation">Explanation (Optional)</string>
+    <string name="hint_explanation">Ex: Because 1+1 equals two units…</string>
+
+    <string name="session_finished_title">Session Finished!</string>
+    <string name="study_no_more_cards">No more cards for today.</string>
+    <string name="btn_back_to_deck">Back to Deck</string>
+
+    <string name="quiz_passed">Passed!</string>
+    <string name="quiz_failed">Needs review</string>
+    <string name="quiz_percentage_format">%d%% correct</string>
+
+    <string name="action_rename">Rename</string>
+    <string name="menu_options">Options</string>
+    <string name="rename_deck_title">Rename Deck</string>
+
+    <string name="search_hint">Search decks…</string>
+    <string name="about_title">About</string>
+    <string name="about_version">Ace Of Decks v1.0</string>
+    <string name="about_slogan">Created with caffeine, lack of sleep, and Open Source.</string>
+
+    <string name="action_about">About</string>
+    <string name="action_close">Close</string>
+
+    <string name="url_twitter">https://x.com/TheInkReaper</string>
+    <string name="url_github">https://github.com/TheInkReaper</string>
+    <string name="url_kofi">https://ko-fi.com/theinkreaper</string>
+
+    <string name="tutorial_deck_name">📘 Ace Of Decks Tutorial</string>
+
+    <string name="tut_c1_q">Welcome! 👋 How do the buttons work?</string>
+    <string name="tut_c1_a">They decide when you see this card again:\n\n🔴 Again: Wrong (Available to retry after this session)\n🟠 Hard: Struggled (Shows soon)\n🟢 Good: Correct (Standard time)\n🔵 Easy: Instant (Shows far later)</string>
+
+    <string name="tut_c2_q">What is Quiz Mode?</string>
+    <string name="tut_c2_a">A multiple-choice test mode (A, B, C, D).</string>
+    <string name="tut_c2_dist1">A mode for cooking</string>
+    <string name="tut_c2_dist2">A mode for sleeping</string>
+
+    <string name="tut_c3_q">How do I edit or delete?</string>
+    <string name="tut_c3_a">Use the menu (⋮) on the deck or the pencil (✏️) on cards.</string>
+
+    <string name="tut_c4_q">How do I save or share decks?</string>
+    <string name="tut_c4_a">Deck menu (⋮) -> Export. This creates a .json file you can send or backup.</string>
+
+    <string name="tut_c5_q">What is the \'Explanation\' field for?</string>
+    <string name="tut_c5_a">Extra notes. They appear below the answer to explain the \'why\' without opening your books.</string>
+    <string name="tut_c5_expl">Example: This extra note helps you understand the context.</string>
+
+    <string name="tut_srs_warning">Note: In \'Study\', if you get a card right, it vanishes until tomorrow. That\'s Spaced Repetition!</string>
+    <string name="tut_c1_expl">Be honest. The algorithm adapts to your memory.</string>
+
+    <string name="quiz_points">Score: %d</string>
+    <string name="loading">Loading…</string>
+    <string name="action_return">Return</string>
+</resources>

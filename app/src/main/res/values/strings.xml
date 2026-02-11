@@ -1,0 +1,113 @@
+<resources>
+    <string name="app_name">Ace Of Decks</string>
+
+    <string name="action_save">Guardar</string>
+    <string name="action_cancel">Cancelar</string>
+    <string name="action_delete">Eliminar</string>
+    <string name="action_edit">Editar</string>
+    <string name="action_add">Añadir</string>
+    <string name="confirm_delete_title">¿Estás seguro?</string>
+    <string name="confirm_delete_message">Esta acción no se puede deshacer.</string>
+
+    <string name="home_title">Mis Mazos</string>
+    <string name="home_empty">No tienes mazos. ¡Crea uno!</string>
+    <string name="dialog_create_deck_title">Nuevo Mazo</string>
+    <string name="deck_name_hint">Nombre del mazo</string>
+
+    <string name="action_study">Estudiar</string>
+    <string name="cards_count_format">%d tarjetas</string>
+    <string name="no_cards_in_deck">Este mazo está vacío.</string>
+
+    <string name="editor_title_new">Nueva Tarjeta</string>
+    <string name="editor_title_edit">Editar Tarjeta</string>
+    <string name="label_card_type">Tipo de Tarjeta</string>
+    <string name="type_flashcard">Flashcard (Memorizar)</string>
+    <string name="type_test">Test / Examen (Opción Múltiple)</string>
+    <string name="label_front">Anverso / Pregunta</string>
+    <string name="label_back">Reverso / Respuesta Correcta</string>
+    <string name="label_distractors">Respuestas Incorrectas (Modo Test)</string>
+    <string name="hint_distractor">Respuesta falsa…</string>
+    <string name="helper_distractors">Añade al menos 1 respuesta falsa.</string>
+
+    <string name="study_mode_flashcards">Flashcards (Repaso)</string>
+    <string name="study_mode_quiz">Modo Examen</string>
+    <string name="btn_show_answer">Ver Respuesta</string>
+    <string name="grade_again">Repetir</string>
+    <string name="grade_hard">Difícil</string>
+    <string name="grade_good">Bien</string>
+    <string name="grade_easy">Fácil</string>
+    <string name="quiz_score_format">Nota: %1$d / %2$d</string>
+    <string name="quiz_finished">¡Examen Terminado!</string>
+
+    <string name="action_export">Exportar Mazo</string>
+    <string name="action_import">Importar Mazo</string>
+    <string name="import_success">Mazo importado correctamente</string>
+    <string name="export_success">Mazo exportado a Descargas</string>
+    <string name="error_generic">Algo salió mal</string>
+    <string name="chip_flashcard">Flashcard</string>
+    <string name="chip_test">Test</string>
+
+    <string name="settings_title">Configuración del Mazo</string>
+    <string name="settings_study_limit">Límite diario (Estudio)</string>
+    <string name="settings_quiz_limit">Preguntas por Examen</string>
+    <string name="settings_limit_none">Sin límite (Todo)</string>
+    <string name="settings_cards_format">%d cartas</string>
+    <string name="settings_questions_format">%d preguntas</string>
+    <string name="settings_note">Nota: Si el mazo tiene menos cartas, se usarán todas las disponibles.</string>
+    <string name="action_settings">Ajustes</string>
+
+    <string name="label_explanation">Explicación (Opcional)</string>
+    <string name="hint_explanation">Ej: Porque 1+1 suma dos unidades…</string>
+
+    <string name="session_finished_title">¡Sesión Terminada!</string>
+    <string name="study_no_more_cards">No hay más cartas para hoy.</string>
+    <string name="btn_back_to_deck">Volver al Mazo</string>
+
+    <string name="quiz_passed">¡Aprobado!</string>
+    <string name="quiz_failed">Necesitas repasar</string>
+    <string name="quiz_percentage_format">%d%% de aciertos</string>
+
+    <string name="action_rename">Renombrar</string>
+    <string name="menu_options">Opciones</string>
+    <string name="rename_deck_title">Renombrar Mazo</string>
+
+    <string name="search_hint">Buscar mazos…</string>
+
+    <string name="about_title">Acerca de</string>
+    <string name="about_version">Ace Of Decks v1.0</string>
+    <string name="about_slogan">Creado con cafeína, falta de sueño y Código Abierto.</string>
+
+    <string name="action_about">Información</string>
+    <string name="action_close">Cerrar</string>
+
+    <string name="url_twitter">https://x.com/TheInkReaper</string>
+    <string name="url_github">https://github.com/TheInkReaper</string>
+    <string name="url_kofi">https://ko-fi.com/theinkreaper</string>
+
+    <string name="tutorial_deck_name">📘 Tutorial Ace Of Decks</string>
+
+    <string name="tut_c1_q">¡Bienvenido! 👋 ¿Cómo funcionan los botones de abajo?</string>
+    <string name="tut_c1_a">Determinan cuándo volverás a ver esta carta:\n\n🔴 Repetir: Fallo (Podrás volver a estudiarla al acabar esta sesión)\n🟠 Difícil: Me costó (Vuelve pronto)\n🟢 Bien: Correcto (Intervalo normal)\n🔵 Fácil: Chupado (Vuelve en mucho tiempo)</string>
+
+    <string name="tut_c2_q">¿Qué es el Modo Examen?</string>
+    <string name="tut_c2_a">Un modo tipo test con opciones múltiples (A, B, C, D).</string>
+    <string name="tut_c2_dist1">Un modo para cocinar</string>
+    <string name="tut_c2_dist2">Un modo para dormir</string>
+
+    <string name="tut_c3_q">¿Cómo edito o borro?</string>
+    <string name="tut_c3_a">Usa el menú (⋮) en el mazo o el lápiz (✏️) en las cartas.</string>
+
+    <string name="tut_c4_q">¿Cómo guardo o comparto mis mazos?</string>
+    <string name="tut_c4_a">Menú del mazo (⋮) -> Exportar. Se creará un archivo .json que puedes enviar o guardar.</string>
+
+    <string name="tut_c5_q">¿Para qué sirve el campo \'Explicación\'?</string>
+    <string name="tut_c5_a">Son tus apuntes extra. Aparecen bajo la respuesta para aclarar el \'por qué\' sin tener que buscar en el libro.</string>
+    <string name="tut_c5_expl">Ejemplo: Esta nota extra te ayuda a entender el contexto.</string>
+
+    <string name="tut_srs_warning">Nota: En \'Estudiar\', si aciertas una carta, esta desaparecerá hasta mañana. ¡Así funciona el repaso espaciado!</string>
+    <string name="tut_c1_expl">Sé sincero al puntuar. El algoritmo se adaptará a tu memoria.</string>
+
+    <string name="quiz_points">Puntos: %d</string>
+    <string name="loading">Cargando…</string>
+    <string name="action_return">Volver</string>
+</resources>
