@@ -68,7 +68,7 @@ Copia esta plantilla, guárdala como `mi_mazo.json` y edítala con tus preguntas
 
 ```json
 {
-  "deck": {
+  "deck_info": {
     "name": "Mazo de Ejemplo",
     "studyLimitPerSession": 20,
     "quizLimitPerSession": 10
@@ -158,7 +158,7 @@ Copy this template, save it as `my_deck.json`, and edit it with your questions:
 
 ```json
 {
-  "deck": {
+  "deck_info": {
     "name": "Example Deck",
     "studyLimitPerSession": 20,
     "quizLimitPerSession": 10
