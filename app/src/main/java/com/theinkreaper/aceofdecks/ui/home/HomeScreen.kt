@@ -22,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -84,116 +85,124 @@ fun HomeScreen(
                 }
             )
         },
-        floatingActionButton = {
-            FloatingActionButton(onClick = { showCreateDialog = true }) {
-                Icon(Icons.Default.Add, contentDescription = stringResource(R.string.action_add))
+        bottomBar = {
+            BottomAppBar(
+                containerColor = MaterialTheme.colorScheme.surface,
+                contentPadding = PaddingValues(0.dp)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 12.dp)
+                ) {
+                    TextButton(
+                        onClick = { showAboutDialog = true },
+                        modifier = Modifier.align(Alignment.CenterStart)
+                    ) {
+                        Text(
+                            text = "©",
+                            fontSize = 24.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.primary.copy(alpha = 0.6f)
+                        )
+                    }
+
+                    Row(
+                        modifier = Modifier.align(Alignment.Center),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        val currentLang = AppCompatDelegate.getApplicationLocales().get(0)?.language ?: "es"
+                        val displayLang = if (currentLang == "es") "ES" else "EN"
+
+                        FilledTonalButton(
+                            onClick = {
+                                val newLang = if (currentLang == "es") "en" else "es"
+                                val appLocale = LocaleListCompat.forLanguageTags(newLang)
+                                AppCompatDelegate.setApplicationLocales(appLocale)
+                            }
+                        ) {
+                            Text(text = displayLang, fontWeight = FontWeight.Bold)
+                        }
+
+                        FilledTonalButton(
+                            onClick = onToggleTheme
+                        ) {
+                            Text(text = if (isDarkTheme) "☀️" else "🌙", fontSize = 18.sp)
+                        }
+                    }
+
+                    FloatingActionButton(
+                        onClick = { showCreateDialog = true },
+                        modifier = Modifier.align(Alignment.CenterEnd),
+                        containerColor = BottomAppBarDefaults.bottomAppBarFabColor,
+                        elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
+                    ) {
+                        Icon(Icons.Default.Add, contentDescription = stringResource(R.string.action_add))
+                    }
+                }
             }
         }
     ) { padding ->
-        Box(
+        Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
         ) {
-            Column(modifier = Modifier.fillMaxSize()) {
-                OutlinedTextField(
-                    value = searchText,
-                    onValueChange = { viewModel.onSearchTextChange(it) },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 8.dp),
-                    placeholder = { Text(stringResource(R.string.search_hint)) },
-                    leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
-                    trailingIcon = {
-                        if (searchText.isNotEmpty()) {
-                            IconButton(onClick = { viewModel.onSearchTextChange("") }) {
-                                Icon(Icons.Default.Close, contentDescription = "Borrar")
-                            }
-                        }
-                    },
-                    singleLine = true
-                )
-
-                val isSearching = searchText.isNotEmpty()
-
-                LazyColumn(
-                    state = reorderState.listState,
-                    modifier = Modifier
-                        .weight(1f)
-                        .fillMaxWidth()
-                        .then(if (!isSearching) Modifier.reorderable(reorderState) else Modifier),
-                    contentPadding = PaddingValues(bottom = 80.dp)
-                ) {
-                    if (localDecks.isEmpty() && searchText.isEmpty()) {
-                        item {
-                            Box(modifier = Modifier.fillParentMaxSize(), contentAlignment = Alignment.Center) {
-                                Text(stringResource(R.string.home_empty))
-                            }
-                        }
-                    } else {
-                        items(localDecks, key = { it.id }) { deck ->
-                            ReorderableItem(reorderableState = reorderState, key = deck.id) { isDragging ->
-                                val elevation = animateDpAsState(if (isDragging) 8.dp else 0.dp, label = "elevation")
-                                DeckItem(
-                                    deck = deck,
-                                    isDragging = isDragging,
-                                    modifier = Modifier
-                                        .shadow(elevation.value)
-                                        .then(if (!isSearching) Modifier.detectReorderAfterLongPress(reorderState) else Modifier),
-                                    onClick = { if (!isDragging) onDeckClick(deck.id) },
-                                    onExport = {
-                                        viewModel.deckPendingExport = deck
-                                        exportLauncher.launch("${deck.name}.json")
-                                    },
-                                    onRename = { deckToRename = deck },
-                                    onDelete = { deckToDelete = deck }
-                                )
-                            }
+            OutlinedTextField(
+                value = searchText,
+                onValueChange = { viewModel.onSearchTextChange(it) },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                placeholder = { Text(stringResource(R.string.search_hint)) },
+                leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
+                trailingIcon = {
+                    if (searchText.isNotEmpty()) {
+                        IconButton(onClick = { viewModel.onSearchTextChange("") }) {
+                            Icon(Icons.Default.Close, contentDescription = "Borrar")
                         }
                     }
-                }
-            }
+                },
+                singleLine = true
+            )
 
-            TextButton(
-                onClick = { showAboutDialog = true },
+            val isSearching = searchText.isNotEmpty()
+
+            LazyColumn(
+                state = reorderState.listState,
                 modifier = Modifier
-                    .align(Alignment.BottomStart)
-                    .padding(16.dp)
+                    .weight(1f)
+                    .fillMaxWidth()
+                    .then(if (!isSearching) Modifier.reorderable(reorderState) else Modifier),
+                contentPadding = PaddingValues(bottom = 16.dp)
             ) {
-                Text(
-                    text = "©",
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.primary.copy(alpha = 0.6f)
-                )
-            }
-
-            Row(
-                modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    .padding(16.dp),
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                val currentLang = AppCompatDelegate.getApplicationLocales().get(0)?.language ?: "es"
-                val displayLang = if (currentLang == "es") "ES" else "EN"
-
-                FilledTonalButton(
-                    onClick = {
-                        val newLang = if (currentLang == "es") "en" else "es"
-                        val appLocale = LocaleListCompat.forLanguageTags(newLang)
-                        AppCompatDelegate.setApplicationLocales(appLocale)
+                if (localDecks.isEmpty() && searchText.isEmpty()) {
+                    item {
+                        Box(modifier = Modifier.fillParentMaxSize(), contentAlignment = Alignment.Center) {
+                            Text(stringResource(R.string.home_empty))
+                        }
                     }
-                ) {
-                    Text(text = displayLang, fontWeight = FontWeight.Bold)
-                }
-
-                val icon = if (isDarkTheme) "☀️" else "🌙"
-
-                FilledTonalButton(
-                    onClick = onToggleTheme
-                ) {
-                    Text(text = icon, fontSize = 18.sp)
+                } else {
+                    items(localDecks, key = { it.id }) { deck ->
+                        ReorderableItem(reorderableState = reorderState, key = deck.id) { isDragging ->
+                            val elevation = animateDpAsState(if (isDragging) 8.dp else 0.dp, label = "elevation")
+                            DeckItem(
+                                deck = deck,
+                                isDragging = isDragging,
+                                modifier = Modifier
+                                    .shadow(elevation.value)
+                                    .then(if (!isSearching) Modifier.detectReorderAfterLongPress(reorderState) else Modifier),
+                                onClick = { if (!isDragging) onDeckClick(deck.id) },
+                                onExport = {
+                                    viewModel.deckPendingExport = deck
+                                    exportLauncher.launch("${deck.name}.json")
+                                },
+                                onRename = { deckToRename = deck },
+                                onDelete = { deckToDelete = deck }
+                            )
+                        }
+                    }
                 }
             }
         }
@@ -235,7 +244,7 @@ fun HomeScreen(
                         ) {
                             IconButton(onClick = { uriHandler.openUri(urlTwitter) }) {
                                 Icon(
-                                    painter = androidx.compose.ui.res.painterResource(R.drawable.ic_twitter),
+                                    painter = painterResource(R.drawable.ic_twitter),
                                     contentDescription = "Twitter",
                                     modifier = Modifier.size(28.dp),
                                     tint = MaterialTheme.colorScheme.onSurface
@@ -244,7 +253,7 @@ fun HomeScreen(
 
                             IconButton(onClick = { uriHandler.openUri(urlGithub) }) {
                                 Icon(
-                                    painter = androidx.compose.ui.res.painterResource(R.drawable.ic_github),
+                                    painter = painterResource(R.drawable.ic_github),
                                     contentDescription = "GitHub",
                                     modifier = Modifier.size(28.dp),
                                     tint = MaterialTheme.colorScheme.onSurface
@@ -253,7 +262,7 @@ fun HomeScreen(
 
                             IconButton(onClick = { uriHandler.openUri(urlKofi) }) {
                                 Icon(
-                                    painter = androidx.compose.ui.res.painterResource(R.drawable.ic_kofi),
+                                    painter = painterResource(R.drawable.ic_kofi),
                                     contentDescription = "Ko-Fi",
                                     modifier = Modifier.size(28.dp),
                                     tint = MaterialTheme.colorScheme.onSurface
@@ -290,8 +299,19 @@ fun HomeScreen(
                 onDismissRequest = { deckToDelete = null },
                 title = { Text(stringResource(R.string.confirm_delete_title)) },
                 text = { Text(stringResource(R.string.confirm_delete_message)) },
-                confirmButton = { TextButton(onClick = { viewModel.deleteDeck(deck); deckToDelete = null }, colors = ButtonDefaults.textButtonColors(contentColor = MaterialTheme.colorScheme.error)) { Text(stringResource(R.string.action_delete)) } },
-                dismissButton = { TextButton(onClick = { deckToDelete = null }) { Text(stringResource(R.string.action_cancel)) } }
+                confirmButton = {
+                    TextButton(
+                        onClick = { viewModel.deleteDeck(deck); deckToDelete = null },
+                        colors = ButtonDefaults.textButtonColors(contentColor = MaterialTheme.colorScheme.error)
+                    ) {
+                        Text(stringResource(R.string.action_delete))
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = { deckToDelete = null }) {
+                        Text(stringResource(R.string.action_cancel))
+                    }
+                }
             )
         }
     }

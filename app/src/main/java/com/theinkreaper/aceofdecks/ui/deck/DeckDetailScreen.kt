@@ -59,12 +59,26 @@ fun DeckDetailScreen(
                 }
             )
         },
-        floatingActionButton = {
-            ExtendedFloatingActionButton(
-                onClick = { onAddCard(deckId) },
-                icon = { Icon(Icons.Default.Add, contentDescription = null) },
-                text = { Text(stringResource(R.string.action_add)) }
-            )
+        bottomBar = {
+            BottomAppBar(
+                containerColor = MaterialTheme.colorScheme.surface,
+                contentPadding = PaddingValues(0.dp)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp)
+                ) {
+                    FloatingActionButton(
+                        onClick = { onAddCard(deckId) },
+                        modifier = Modifier.align(Alignment.CenterEnd),
+                        containerColor = BottomAppBarDefaults.bottomAppBarFabColor,
+                        elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
+                    ) {
+                        Icon(Icons.Default.Add, contentDescription = stringResource(R.string.action_add))
+                    }
+                }
+            }
         }
     ) { padding ->
         Column(
@@ -101,7 +115,10 @@ fun DeckDetailScreen(
                 }
             }
 
-            LazyColumn(modifier = Modifier.fillMaxSize()) {
+            LazyColumn(
+                modifier = Modifier.fillMaxSize(),
+                contentPadding = PaddingValues(bottom = 16.dp)
+            ) {
                 items(cards) { card ->
                     CardItemRow(
                         card = card,
